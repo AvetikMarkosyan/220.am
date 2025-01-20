@@ -1,4 +1,4 @@
-.services {
+/* .services {
     margin: 80px auto;
     width: 90%;
     display: flex;
@@ -50,4 +50,63 @@
 .service:hover .caption{
     opacity: 1;
     padding-top: 0;
+} */
+
+.services {
+    margin: 80px auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.service {
+    flex-basis: 31%; 
+    position: relative;
+    overflow: hidden; /* Ensures the caption stays within the bounds of the service */
+}
+
+.service img {
+    width: 100%; 
+    max-width: 500px;
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 10px;
+    display: block;
+    filter: grayscale(80%);    
+    transition: 0.4s ease; /* Adds smooth transition to the image */
+}
+
+.caption {
+    border-radius: 0px;
+    position: absolute;
+    width: 99%;
+    top: 50%;
+    left: 49.5%;
+    transform: translate(-50%, -50%) scale(0); /* Starts small (hidden) */
+    background: rgba(0, 15, 152, 0.3); /* Adjust background for better visibility */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    padding: 20px; /* Optional padding */
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.caption img {
+    width: 60px;
+    margin-bottom: 8%;
+}
+
+.service:hover .caption {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Enlarges the popup to full size */
+}
+
+.service:hover img {
+    filter: grayscale(0); /* Removes grayscale effect on hover */
+    transform: scale(1.05); /* Slightly zooms the image for an engaging effect */
 }

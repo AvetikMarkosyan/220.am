@@ -13,21 +13,21 @@ const Services = () => {
 			<div className="service">
 				<img src={armen} alt="" />
 				<div className="caption">
-					<img src={home_electrical} alt="" />
+					<img src={home_electrical} style={{height: '150px'}} alt="" />
 					<p>Aprtment Electrical Installation</p>
 				</div>
 			</div>
 			<div className="service">
 				<img src={hovo_industry} alt="" />
 				<div className="caption">
-					<img src={Electric_industry_icon} alt="" />
+					<img src={Electric_industry_icon} style={{height: '150px'}} alt="" />
 					<p>Manufacturing Electrical Installation</p>
 				</div>
 			</div>
 			<div className="service">
 				<img src={xumb_kino} alt="" />
 				<div className="caption">
-					<img src={building_icon} alt="" />
+					<img src={building_icon} style={{height: '150px'}} alt="" />
 					<p>Building Electrical Installation</p>
 				</div>
 			</div>
