@@ -9,7 +9,7 @@ import building_icon from '../../assets/building_icon.svg';
 
 const Services = () => {
 	return (
-		<div className="services">
+		<div id="services" className="services">
 			<div className="service">
 				<img src={armen} alt="" />
 				<div className="caption">

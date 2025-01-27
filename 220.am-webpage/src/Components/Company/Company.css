@@ -1,0 +1,17 @@
+.company{
+    margin: 80px auto;
+    width: 90%;
+   text-align: center;
+}
+
+.gallery{
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gallery img{
+    width: 23%; 
+    border-radius: 10px;
+}

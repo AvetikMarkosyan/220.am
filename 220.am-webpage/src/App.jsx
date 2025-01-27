@@ -15,6 +15,8 @@ const App = () => {
         <Services/>
       </div>
       <About/>
+      <Title subTitle='Gallery' title='220.am Photos' />
+      {/* <Company /> */}
     </div>
   )
 }

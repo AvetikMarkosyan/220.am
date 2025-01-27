@@ -20,3 +20,10 @@ nav ul li{
     margin: 5px 20px;
     font-size: 16pz;
 }
+
+nav.container.scrolled {
+    background-color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  

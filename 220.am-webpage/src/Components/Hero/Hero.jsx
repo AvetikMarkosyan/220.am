@@ -4,7 +4,7 @@ import  battery from '../../assets/battery.svg';
 
 const Hero = () => {
   return (
-    <div className='hero container'>
+    <div id="home" className='hero container'>
       <div className="hero-text">
         <h1>We Ensure better electrical installation  for a better</h1>
         <p>At 220.am, we deliver top-quality electrical solutions designed to meet your unique needs.
