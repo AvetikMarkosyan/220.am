@@ -4,7 +4,7 @@ import  battery from '../../assets/battery.svg';
 
 const Hero = () => {
   return (
-    <div id="home" className='hero container'>
+    <section id="home" className='hero container'>
       <div className="hero-text">
         <h1>We Ensure better electrical installation  for a better</h1>
         <p>At 220.am, we deliver top-quality electrical solutions designed to meet your unique needs.
@@ -12,7 +12,7 @@ const Hero = () => {
             efficiency, and excellence in every project..</p>
             <button className='btn-explore'>Explore more<img  height={70} src={battery} alt="" /></button>
       </div>
-    </div>
+    </section>
   )
 }
 

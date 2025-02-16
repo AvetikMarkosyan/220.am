@@ -22,7 +22,7 @@ nav ul li{
 }
 
 nav.container.scrolled {
-    background-color: #333;
+    background-color: #212EA0;
     transition: background-color 0.3s ease;
   }
   

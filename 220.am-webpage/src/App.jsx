@@ -4,6 +4,7 @@ import Hero from './Components/Hero/Hero';
 import Services from './Components/Serivices/Services';
 import Title from './Components/Title/Title';
 import About from './Components/About/About';
+import Company from './Components/Company/Company';
 
 const App = () => {
   return (
@@ -13,10 +14,11 @@ const App = () => {
       <div classNmae="container">
         <Title subTitle='Our Services' title='What We Offer'/>
         <Services/>
+        <About/>
+        <Title subTitle='Gallery' title='220.am Photos' />
+        <Company />
       </div>
-      <About/>
-      <Title subTitle='Gallery' title='220.am Photos' />
-      {/* <Company /> */}
+      
     </div>
   )
 }

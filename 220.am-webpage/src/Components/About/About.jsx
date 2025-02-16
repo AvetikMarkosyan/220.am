@@ -5,7 +5,7 @@ import play_icon from '../../assets/play_icon.svg'
 
 const About = () => {
   return (
-    <div id="about" className='about'>
+    <section id="about" className='about'>
         <div className="about-left">
             <img src={about_img} alt="" className='about-img' />
             <img src={play_icon} alt="" className='play-icon' />
@@ -30,7 +30,7 @@ const About = () => {
            <p>Thank you for choosing 220.am as your trusted electrical partner. Together, let’s build a brighter, 
             more sustainable future!</p>
         </div>
-    </div>
+    </section>
   )
 }
 

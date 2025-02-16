@@ -32,7 +32,8 @@ const Navbar = () => {
   useEffect(() => {
     const observerOptions = {
       root: null, // Observe relative to the viewport
-      threshold: 0.6, // Trigger when 60% of the section is visible
+      threshold: 0.6
+      // , // Trigger when 60% of the section is visible
     };
 
     const observer = new IntersectionObserver((entries) => {

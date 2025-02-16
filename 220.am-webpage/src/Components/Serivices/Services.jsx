@@ -9,7 +9,7 @@ import building_icon from '../../assets/building_icon.svg';
 
 const Services = () => {
 	return (
-		<div id="services" className="services">
+		<section id="services" className="services">
 			<div className="service">
 				<img src={armen} alt="" />
 				<div className="caption">
@@ -31,7 +31,7 @@ const Services = () => {
 					<p>Building Electrical Installation</p>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }
 

@@ -32,3 +32,10 @@ a{
     align-items: center;
     justify-content: center;
 }
+.btn.darck-btn{
+    background: #212EA0;
+    color: #FFF;
+}
+section{
+    /* scroll-margin-top: 300px; */
+};
