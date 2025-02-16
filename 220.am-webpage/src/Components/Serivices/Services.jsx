@@ -1,5 +1,3 @@
-import React from "react";
-import "./Services.css";
 import armen from "../../assets/armen.png";
 import hovo_industry from "../../assets/hovo_industry.png";
 import xumb_kino from "../../assets/xumb_kino.png";
@@ -7,6 +5,7 @@ import home_electrical from "../../assets/home_electrical.svg";
 import Electric_industry_icon from "../../assets/Electric_industry_icon.svg";
 import building_icon from "../../assets/building_icon.svg";
 import Title from "../Title/Title";
+import "./Services.css";
 
 const Services = () => {
   return (

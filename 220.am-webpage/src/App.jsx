@@ -10,7 +10,7 @@ const App = () => {
     <div>
       <Navbar />
       <Hero />
-      <div classNmae="container">
+      <div>
         <Services />
         <About />
         <Title subTitle="Gallery" title="220.am Photos" />

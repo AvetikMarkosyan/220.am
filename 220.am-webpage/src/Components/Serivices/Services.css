@@ -68,7 +68,7 @@
 .service {
   flex-basis: 31%;
   position: relative;
-  overflow: hidden; /* Ensures the caption stays within the bounds of the service */
+  overflow: hidden;
 }
 
 .service img {
@@ -79,7 +79,7 @@
   border-radius: 10px;
   display: block;
   filter: grayscale(80%);
-  transition: 0.4s ease; /* Adds smooth transition to the image */
+  transition: 0.4s ease;
 }
 
 .caption {
@@ -88,13 +88,8 @@
   width: 99%;
   top: 50%;
   left: 49.5%;
-  transform: translate(-50%, -50%) scale(0); /* Starts small (hidden) */
-  background: rgba(
-    0,
-    15,
-    152,
-    0.3
-  ); /* Adjust background for better visibility */
+  transform: translate(-50%, -50%) scale(0);
+  background: rgba(0, 15, 152, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,10 +108,10 @@
 
 .service:hover .caption {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1); /* Enlarges the popup to full size */
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .service:hover img {
-  filter: grayscale(0); /* Removes grayscale effect on hover */
-  transform: scale(1.05); /* Slightly zooms the image for an engaging effect */
+  filter: grayscale(0);
+  transform: scale(1.05);
 }

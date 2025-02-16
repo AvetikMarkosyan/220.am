@@ -1,7 +1,6 @@
-import React from "react";
-import "./About.css";
 import about_img from "../../assets/about_img.png";
 import play_icon from "../../assets/play_icon.svg";
+import "./About.css";
 
 const About = () => {
   return (

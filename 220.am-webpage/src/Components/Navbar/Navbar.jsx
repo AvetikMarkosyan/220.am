@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import "./Navbar.css";
 import logo from "../../assets/logo_original.svg";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [navbarColor, setNavbarColor] = useState(false); // For navbar color change
@@ -9,13 +9,13 @@ const Navbar = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      threshold: 0.6,
+      threshold: 1.0,
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id); // Set the active section
+          setActiveSection(entry.target.id);
         }
       });
     }, observerOptions);
