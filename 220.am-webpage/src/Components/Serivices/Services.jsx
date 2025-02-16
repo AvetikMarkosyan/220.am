@@ -9,9 +9,9 @@ import "./Services.css";
 
 const Services = () => {
   return (
-    <div className="section-wrapper">
+    <section className="section-wrapper" id="services">
       <Title subTitle="Our Services" title="What We Offer" />
-      <section id="services" className="services">
+      <div className="services">
         <div className="service">
           <img src={armen} alt="" />
           <div className="caption">
@@ -37,8 +37,8 @@ const Services = () => {
             <p>Building Electrical Installation</p>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

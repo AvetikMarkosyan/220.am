@@ -5,10 +5,12 @@ import hovo from "../../assets/hovo.png";
 import xumb from "../../assets/xumb.png";
 import acSupply from "../../assets/acSupply.svg";
 import "./Company.css";
+import Title from "../Title/Title";
 
 const Company = () => {
   return (
     <section id="pictures" className="company">
+      <Title subTitle="Gallery" title="220.am Photos" />
       <div className="gallery">
         <img src={hovo_armen} alt="" />
         <img src={hovo_peto} alt="" />
