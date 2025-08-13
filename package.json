@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@astrojs/vercel": "^8.2.5",
     "@formspree/react": "^3.0.0",
     "@tailwindcss/vite": "^4.1.5",
     "@types/react": "^19.1.6",
