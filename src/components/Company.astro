@@ -1,10 +1,10 @@
 ---
 // Company.astro
-import hovo_armen from "@/assets/hovo_armen.png";
-import hovo_peto from "@/assets/hovo_peto.png";
-import hovo_peto1 from "@/assets/hovo_peto1.png";
-import hovo from "@/assets/hovo.png";
-import xumb from "@/assets/xumb.png";
+import worker_2_worker_1 from "@/assets/worker_2_worker_1.png";
+import worker_2_worker_4 from "@/assets/worker_2_worker_4.png";
+import worker_2_worker_4_drowing from "@/assets/worker_2_worker_4_drowing.png";
+import worker_2 from "@/assets/worker_2.png";
+import group from "@/assets/group.png";
 import acSupply from "@/assets/acSupply.svg";
 import Title from "../components/Title.astro";
 ---
@@ -14,7 +14,7 @@ import Title from "../components/Title.astro";
 
   <div class="flex flex-wrap justify-around items-center gap-4 mb-10">
   {
-    [hovo_armen, hovo_peto, hovo_peto1, hovo, xumb].map((img, index) => (
+    [worker_2_worker_1, worker_2_worker_4, worker_2_worker_4_drowing, worker_2, group].map((img, index) => (
       <img
         src={img.src}
         alt={`Gallery image ${index + 1}`}

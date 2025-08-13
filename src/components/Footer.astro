@@ -1,0 +1,58 @@
+---
+import { FaFacebook, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+---
+
+<footer class="bg-[#212EA0] text-white py-12">
+  <div class="max-w-[90%] mx-auto flex flex-col md:flex-row justify-between gap-12">
+    
+    <!-- About -->
+    <div class="md:w-1/3">
+      <h2 class="text-2xl font-semibold mb-4">220.am</h2>
+      <p class="text-sm leading-relaxed text-gray-200">
+        Providing top-quality electrical installation and automation services
+        for residential, commercial, and industrial projects, ensuring safety, efficiency, and excellence.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+      <ul class="space-y-2 text-gray-200">
+        <li><a href="#home" class="hover:text-yellow-300 transition-colors">Home</a></li>
+        <li><a href="#services" class="hover:text-yellow-300 transition-colors">Services</a></li>
+        <li><a href="#about" class="hover:text-yellow-300 transition-colors">About</a></li>
+        <li><a href="#pictures" class="hover:text-yellow-300 transition-colors">Gallery</a></li>
+        <li><a href="#contact-us" class="hover:text-yellow-300 transition-colors">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+      <ul class="space-y-3 text-gray-200">
+        <li class="flex items-center gap-2">
+          <FaPhone size={16} client:only="react" /> +(374) 77 076 220
+        </li>
+        <li class="flex items-center gap-2">
+          <FaEnvelope size={16} client:only="react" /> info@220.am
+        </li>
+        <li class="flex items-center gap-2">
+          <FaMapMarkerAlt size={16} client:only="react" /> Kurghinyan 27/41 Str, Yerevan, Armenia
+        </li>
+      </ul>
+      <div class="flex gap-4 mt-4">
+        <a href="https://www.facebook.com/share/19mXuTL5AV/?mibextid=wwXIfr" class="hover:text-yellow-300 transition">
+          <FaFacebook size={20} client:only="react" />
+        </a>
+        <a href="https://www.instagram.com/220v.am?igsh=MXd2N3FyY2V5a3hsag==" class="hover:text-yellow-300 transition">
+          <FaInstagram size={20} client:only="react" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="text-center text-sm mt-10 border-t border-white/20 pt-4 text-gray-300">
+    {new Date().getFullYear()} 220.am Electricity Done Right
+  </div>
+</footer>
