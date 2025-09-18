@@ -135,7 +135,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 text-white text-sm font-medium">
-          {["home", "services", "about", "pictures", "contact-us"].map(
+          {["home", "services", "about", "gallery", "contact-us"].map(
             (item) => (
               <li
                 key={item}
@@ -163,7 +163,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-[#212EA0] text-white py-6 px-6 space-y-4">
-          {["home", "services", "about", "pictures", "contact-us"].map(
+          {["home", "services", "about", "gallery", "contact-us"].map(
             (item) => (
               <div
                 key={item}
