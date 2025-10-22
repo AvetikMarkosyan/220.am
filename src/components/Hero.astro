@@ -10,23 +10,26 @@ import heroBg from "@/assets/hero_worker_3.png";
   style={`background-image: linear-gradient(rgba(8,0,58,0.7), rgba(8,0,58,0.7)), url(${heroBg.src});`}
 >
   <div class="text-center max-w-3xl px-4">
-    <!-- <h1 class="text-3xl md:text-6xl font-semibold"> -->
-     <h1 class="text-3xl md:text-6xl font-semibold">
-        Premium Electrical Solutions, Built to Last
+    <h1 class="text-3xl md:text-6xl font-semibold">
+      Premium Electrical Solutions, Built to Last
     </h1>
-    <!-- <p class="max-w-2xl mx-auto mt-4 mb-6 leading-relaxed text-lg"> -->
-     <!-- <p class="text-sm md:text-lg max-w-2xl mx-auto mt-4 mb-6 leading-relaxed"> -->
-      <p class="text-sm md:text-lg">
+
+    <p class="text-sm md:text-lg mt-4 mb-6 leading-relaxed max-w-2xl mx-auto">
       At 220.am, we deliver top-quality electrical solutions designed to
       meet your unique needs. From residential to commercial and industrial
       services, our experienced team ensures safety, efficiency, and
       excellence in every project.
     </p>
+
+    <!-- ✅ Scroll to #about section -->
     <div class="flex justify-center">
-      <button class="bg-white text-gray-900 px-6 py-3 text-lg rounded-full flex items-center gap-3 hover:bg-gray-200 transition">
+      <a
+        href="#services"
+        class="bg-white text-gray-900 px-6 py-3 text-lg rounded-full flex items-center gap-3 hover:bg-gray-200 transition"
+      >
         Explore more
         <img src={battery.src} alt="Battery icon" class="h-10" />
-      </button>
+      </a>
     </div>
   </div>
 </section>
