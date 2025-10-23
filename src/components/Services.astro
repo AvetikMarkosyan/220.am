@@ -9,6 +9,143 @@ import { FaHome } from "react-icons/fa";
 import { MdFactory } from "react-icons/md";
 import { FaBuilding } from "react-icons/fa";
 import { FaIndustry } from "react-icons/fa";
+
+const services = [
+  {
+    id: "industrial",
+    title: "Industrial & Building Maintenance",
+    icon: FaIndustry,
+    image: industrial_building_maintenance.src,
+    description:
+      "We specialize in maintaining industrial and commercial electrical systems to ensure maximum reliability and energy efficiency. Our maintenance services minimize downtime and help clients operate with confidence.",
+  },
+  {
+    id: "residential",
+    title: "Residential Electrical Installation",
+    icon: FaHome,
+    image: worker_1.src,
+    description:
+      "From wiring new homes to upgrading existing systems, we offer safe and efficient residential electrical installation services, ensuring your living spaces meet all safety and energy standards.",
+  },
+  {
+    id: "industrial-installation",
+    title: "Industrial Electrical Installation",
+    icon: MdFactory,
+    image: worker_2_industry.src,
+    description:
+      "Our industrial installation services are designed for factories, plants, and warehouses. We handle heavy-duty systems, automation, and control panel setups with precision.",
+  },
+  {
+    id: "building",
+    title: "Building Electrical Installation",
+    icon: FaBuilding,
+    image: group_movie.src,
+    description:
+      "We provide electrical infrastructure for large-scale commercial and residential buildings, including design, wiring, and equipment setup tailored to your needs.",
+  },
+];
+---
+
+<section id="services" class="flex flex-col items-center py-20 px-4 scroll-mt-[105px]">
+  <Title subTitle="Our Services" title="What We Offer" />
+
+  <!-- ✅ Service Cards -->
+  <div class="flex flex-wrap justify-center gap-10 w-full max-w-6xl mt-10">
+    {services.map((service) => (
+      <div
+        class="relative flex-[1_1_31%] max-w-[500px] h-[250px] rounded-lg overflow-hidden group cursor-pointer"
+        onclick={`showServiceDetails('${service.id}')`}
+      >
+        <img
+          src={service.image}
+          alt={service.title}
+          class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-blue-900/30 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 flex flex-col items-center justify-center text-white">
+          {service.icon && (<service.icon size={50} className="text-white" />)}
+          <p class="text-center font-medium">{service.title}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- ✅ Detail Section -->
+<section
+  id="service-details"
+  class="hidden w-[90%] mx-auto scroll-mt-[200px] my-20 text-center transition-all duration-300"
+>
+  <h2 id="detail-title" class="text-3xl font-semibold mb-4"></h2>
+  <img
+    id="detail-img"
+    src=""
+    alt="Service Image"
+    class="mx-auto rounded-lg mb-4 max-h-[400px] shadow-lg"
+  />
+  <p
+    id="detail-desc"
+    class="max-w-3xl mx-auto text-gray-700 leading-relaxed text-lg"
+  ></p>
+</section>
+
+<script is:inline>
+  const serviceData = {
+    industrial: {
+      title: "Industrial & Building Maintenance",
+      img: "/src/assets/industrial_building_maintenance.jpeg",
+      desc: "We specialize in maintaining industrial and commercial electrical systems to ensure maximum reliability and energy efficiency. Our maintenance services minimize downtime and help clients operate with confidence.",
+    },
+    residential: {
+      title: "Residential Electrical Installation",
+      img: "/src/assets/worker_1.png",
+      desc: "From wiring new homes to upgrading existing systems, we offer safe and efficient residential electrical installation services, ensuring your living spaces meet all safety and energy standards.",
+    },
+    "industrial-installation": {
+      title: "Industrial Electrical Installation",
+      img: "/src/assets/worker_2_industry.png",
+      desc: "Our industrial installation services are designed for factories, plants, and warehouses. We handle heavy-duty systems, automation, and control panel setups with precision.",
+    },
+    building: {
+      title: "Building Electrical Installation",
+      img: "/src/assets/group_movie.png",
+      desc: "We provide electrical infrastructure for large-scale commercial and residential buildings, including design, wiring, and equipment setup tailored to your needs.",
+    },
+  };
+
+  window.showServiceDetails = function (id) {
+    const detailSection = document.getElementById("service-details");
+    const img = document.getElementById("detail-img");
+    const title = document.getElementById("detail-title");
+    const desc = document.getElementById("detail-desc");
+
+    const service = serviceData[id];
+    if (!service) return;
+
+    img.src = service.img;
+    title.textContent = service.title;
+    desc.textContent = service.desc;
+
+    detailSection.classList.remove("hidden");
+    detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+</script>
+
+
+
+
+
+
+<!-- ---
+import worker_1 from "@/assets/worker_1.png";
+import worker_2_industry from "@/assets/worker_2_industry.png";
+import industrial_building_maintenance from "@/assets/industrial_building_maintenance.jpeg";
+import group_movie from "@/assets/group_movie.png";
+import Title from "../components/Title.astro";
+
+import { FaHome } from "react-icons/fa";
+import { MdFactory } from "react-icons/md";
+import { FaBuilding } from "react-icons/fa";
+import { FaIndustry } from "react-icons/fa";
 ---
 
 <section id="services" class="flex flex-col scroll-mt-[170px] items-center py-20 px-4">
@@ -62,4 +199,4 @@ import { FaIndustry } from "react-icons/fa";
       </div>
     </div>
   </div>
-</section>
+</section> -->
