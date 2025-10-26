@@ -1,76 +1,3 @@
-// import { useState, useEffect } from "react";
-// import logo from "@/assets/logo_original.svg";
-
-// const Navbar = () => {
-//   const [navbarColor, setNavbarColor] = useState(false);
-//   const [activeSection, setActiveSection] = useState("home");
-
-//   useEffect(() => {
-//     const observer = new IntersectionObserver(
-//       (entries) => {
-//         entries.forEach((entry) => {
-//           if (entry.isIntersecting) {
-//             setActiveSection(entry.target.id);
-//           }
-//         });
-//       },
-//       { threshold: 0.6 }
-//     );
-
-//     const sections = document.querySelectorAll("section");
-//     sections.forEach((section) => observer.observe(section));
-
-//     return () => observer.disconnect();
-//   }, []);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setNavbarColor(window.scrollY > 180);
-//     };
-
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   const handleScrollTo = (e, item) => {
-//     e.preventDefault();
-//     const section = document.getElementById(item);
-//     section?.scrollIntoView({ behavior: "smooth" });
-//     setActiveSection(item);
-//   };
-
-//   return (
-//     <nav
-//       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-//         navbarColor ? "bg-[#212ea0]" : "bg-transparent"
-//       }`}
-//     >
-//       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-//         <a href="#home">
-//           <img src={logo.src} alt="220.am Logo" className="w-44 cursor-pointer" />
-//         </a>
-//         <ul className="flex space-x-6 text-white text-sm font-medium">
-//           {["home", "services", "about", "pictures", "contact-us"].map((item) => (
-//             <li
-//               key={item}
-//               onClick={(e) => handleScrollTo(e, item)}
-//               className={`cursor-pointer ${
-//                 activeSection === item ? "underline text-yellow-300" : ""
-//               }`}
-//             >
-//               <a href={`#${item}`}>
-//                 {item.charAt(0).toUpperCase() + item.slice(1)}
-//               </a>
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "@/assets/logo_original.svg";
@@ -90,7 +17,7 @@ const Navbar = () => {
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.5 }
     );
 
     document.querySelectorAll("section").forEach((section) =>
@@ -109,18 +36,34 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Disable background scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
+
   const handleScrollTo = (e, item) => {
     e.preventDefault();
     const section = document.getElementById(item);
-    section?.scrollIntoView({ behavior: "smooth" });
-    setActiveSection(item);
-    setMenuOpen(false); // Close menu on click
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveSection(item);
+    }
+    setMenuOpen(false);
   };
+
+  const navItems = [
+    "home",
+    "about",
+    "certifications",
+    "services",
+    "gallery",
+    "contact-us",
+  ];
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-        navbarColor ? "bg-[#212EA0]" : "bg-transparent"
+        navbarColor ? "bg-[#212EA0]/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
@@ -129,58 +72,173 @@ const Navbar = () => {
           <img
             src={logo.src}
             alt="220.am Logo"
-            className="w-44 cursor-pointer"
+            className="w-44 cursor-pointer select-none"
           />
         </a>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6 text-white text-sm font-medium">
-          {["home", "about", "certifications", "services", "gallery", "contact-us"].map(
-            (item) => (
-              <li
-                key={item}
-                onClick={(e) => handleScrollTo(e, item)}
-                className={`cursor-pointer ${
-                  activeSection === item ? "underline text-yellow-300" : ""
-                }`}
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </li>
-            )
-          )}
+        <ul className="hidden md:flex space-x-8 text-white text-base font-medium">
+          {navItems.map((item) => (
+            <li
+              key={item}
+              onClick={(e) => handleScrollTo(e, item)}
+              className={`cursor-pointer transition-colors hover:text-yellow-300 ${
+                activeSection === item ? "underline text-yellow-300" : ""
+              }`}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1).replace("-", " ")}
+            </li>
+          ))}
         </ul>
 
         {/* Mobile Hamburger */}
-        <div className="md:hidden text-white cursor-pointer">
-          {menuOpen ? (
-            <FaTimes size={24} onClick={() => setMenuOpen(false)} />
-          ) : (
-            <FaBars size={24} onClick={() => setMenuOpen(true)} />
-          )}
+        <div
+          className="md:hidden text-white cursor-pointer z-50"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          {menuOpen ? <FaTimes size={26} /> : <FaBars size={26} />}
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-[#212EA0] text-white py-6 px-6 space-y-4">
-          {["home", "about", "certifications", "services", "gallery", "contact-us"].map(
-            (item) => (
-              <div
-                key={item}
-                onClick={(e) => handleScrollTo(e, item)}
-                className={`cursor-pointer block ${
-                  activeSection === item ? "underline text-yellow-300" : ""
-                }`}
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </div>
-            )
-          )}
-        </div>
-      )}
+      <div
+        className={`fixed top-0 right-0 h-full w-2/3 bg-[#212EA0] text-white px-6 py-20 transform transition-transform duration-300 md:hidden ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <ul className="flex flex-col gap-6 text-lg font-medium">
+          {navItems.map((item) => (
+            <li
+              key={item}
+              onClick={(e) => handleScrollTo(e, item)}
+              className={`cursor-pointer transition-colors hover:text-yellow-300 ${
+                activeSection === item ? "underline text-yellow-300" : ""
+              }`}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1).replace("-", " ")}
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 };
 
 export default Navbar;
+
+
+
+
+// import { useState, useEffect } from "react";
+// import { FaBars, FaTimes } from "react-icons/fa";
+// import logo from "@/assets/logo_original.svg";
+
+// const Navbar = () => {
+//   const [navbarColor, setNavbarColor] = useState(false);
+//   const [activeSection, setActiveSection] = useState("home");
+//   const [menuOpen, setMenuOpen] = useState(false);
+
+//   // Track active section
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       (entries) => {
+//         entries.forEach((entry) => {
+//           if (entry.isIntersecting) {
+//             setActiveSection(entry.target.id);
+//           }
+//         });
+//       },
+//       { threshold: 0.6 }
+//     );
+
+//     document.querySelectorAll("section").forEach((section) =>
+//       observer.observe(section)
+//     );
+
+//     return () => observer.disconnect();
+//   }, []);
+
+//   // Change navbar background on scroll
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setNavbarColor(window.scrollY > 180);
+//     };
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   const handleScrollTo = (e, item) => {
+//     e.preventDefault();
+//     const section = document.getElementById(item);
+//     section?.scrollIntoView({ behavior: "smooth" });
+//     setActiveSection(item);
+//     setMenuOpen(false); // Close menu on click
+//   };
+
+//   return (
+//     <nav
+//       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
+//         navbarColor ? "bg-[#212EA0]" : "bg-transparent"
+//       }`}
+//     >
+//       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+//         {/* Logo */}
+//         <a href="#home" onClick={(e) => handleScrollTo(e, "home")}>
+//           <img
+//             src={logo.src}
+//             alt="220.am Logo"
+//             className="w-44 cursor-pointer"
+//           />
+//         </a>
+
+//         {/* Desktop Menu */}
+//         <ul className="hidden md:flex space-x-6 text-white text-sm font-medium">
+//           {["home", "about", "certifications", "services", "gallery", "contact-us"].map(
+//             (item) => (
+//               <li
+//                 key={item}
+//                 onClick={(e) => handleScrollTo(e, item)}
+//                 className={`cursor-pointer ${
+//                   activeSection === item ? "underline text-yellow-300" : ""
+//                 }`}
+//               >
+//                 {item.charAt(0).toUpperCase() + item.slice(1)}
+//               </li>
+//             )
+//           )}
+//         </ul>
+
+//         {/* Mobile Hamburger */}
+//         <div className="md:hidden text-white cursor-pointer">
+//           {menuOpen ? (
+//             <FaTimes size={24} onClick={() => setMenuOpen(false)} />
+//           ) : (
+//             <FaBars size={24} onClick={() => setMenuOpen(true)} />
+//           )}
+//         </div>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       {menuOpen && (
+//         <div className="md:hidden bg-[#212EA0] text-white py-6 px-6 space-y-4">
+//           {["home", "about", "certifications", "services", "gallery", "contact-us"].map(
+//             (item) => (
+//               <div
+//                 key={item}
+//                 onClick={(e) => handleScrollTo(e, item)}
+//                 className={`cursor-pointer block ${
+//                   activeSection === item ? "underline text-yellow-300" : ""
+//                 }`}
+//               >
+//                 {item.charAt(0).toUpperCase() + item.slice(1)}
+//               </div>
+//             )
+//           )}
+//         </div>
+//       )}
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
 
