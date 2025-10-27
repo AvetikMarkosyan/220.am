@@ -4,13 +4,11 @@ import Title from "../components/Title.astro";
 import worker_1 from "@/assets/worker_1.png";
 import worker_2_industry from "@/assets/worker_2_industry.png";
 import industrial_building_maintenance from "@/assets/industrial_building_maintenance.jpeg";
-import group_movie from "@/assets/group_movie.png";
-
+import group_movie from "@/assets/group_movie.png"
 import { FaHome } from "react-icons/fa";
 import { MdFactory } from "react-icons/md";
 import { FaBuilding } from "react-icons/fa";
 import { FaIndustry } from "react-icons/fa";
-
 
 const services = [
   {
@@ -47,14 +45,17 @@ const services = [
   },
 ];
 ---
+
 <section id="services" class="flex flex-col items-center py-20 px-4 scroll-mt-[95px]">
   <Title subTitle="Our Services" title="What We Offer" />
 
   <!-- Service Cards -->
-  <div class="flex flex-wrap justify-center gap-10 w-full max-w-6xl mt-10">
+  <div
+    class="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 w-full max-w-6xl mt-10"
+  >
     {services.map((service) => (
       <div
-        class="relative flex-[1_1_31%] max-w-[500px] h-[250px] rounded-lg overflow-hidden group cursor-pointer"
+        class="relative flex-[1_1_90%] sm:flex-[1_1_45%] lg:flex-[1_1_30%] max-w-[500px] h-[220px] sm:h-[250px] rounded-lg overflow-hidden group cursor-pointer shadow-md hover:shadow-lg transition-shadow"
         onclick="showServiceDetails(this)"
         data-id={service.id}
         data-img={service.imageSrc}
@@ -66,10 +67,13 @@ const services = [
           alt={service.title}
           class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
         />
-        <div class="absolute inset-0 bg-blue-900/30 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 flex flex-col items-center justify-center text-white">
-          <!-- render icon statically (no client:only) -->
-          <service.icon size={50} className="text-white" />
-          <p class="text-center font-medium">{service.title}</p>
+        <div
+          class="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center text-white"
+        >
+          <service.icon size={40} className="text-white mb-2" />
+          <p class="text-center text-sm sm:text-base font-medium px-2">
+            {service.title}
+          </p>
         </div>
       </div>
     ))}
@@ -77,36 +81,48 @@ const services = [
 </section>
 
 <!-- Detail Section -->
-<section id="service-details" class="hidden w-[90%] mx-auto my-20 text-center transition-all duration-300">
-  <h2 id="detail-title" class="text-3xl font-semibold mb-4"></h2>
-  <img id="detail-img" src="" alt="Service Image" class="mx-auto rounded-lg mb-4 max-h-[400px] shadow-lg" />
-  <p id="detail-desc" class="max-w-3xl mx-auto text-gray-700 leading-relaxed text-lg"></p>
+<section
+  id="service-details"
+  class="hidden w-[90%] mx-auto my-20 text-center transition-all duration-300"
+>
+  <h2 id="detail-title" class="text-2xl sm:text-3xl font-semibold mb-4"></h2>
+  <img
+    id="detail-img"
+    src=""
+    alt="Service Image"
+    class="mx-auto rounded-lg mb-4 max-h-[400px] shadow-lg object-cover w-full sm:w-auto"
+  />
+  <p
+    id="detail-desc"
+    class="max-w-3xl mx-auto text-gray-700 leading-relaxed text-base sm:text-lg px-2"
+  ></p>
   <div class="mt-6">
-    <button type="button" class="px-4 py-2 rounded bg-gray-200" onclick="hideServiceDetails()">Close</button>
+    <button
+      type="button"
+      class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 transition"
+      onclick="hideServiceDetails()"
+    >
+      Close
+    </button>
   </div>
 </section>
 
 <script is:inline>
-  // expose global function for the onclick attribute
   window.showServiceDetails = function (el) {
-    // el is the clicked card element (passed as `this` from the onclick attribute)
     const detailSection = document.getElementById("service-details");
     const img = document.getElementById("detail-img");
     const title = document.getElementById("detail-title");
     const desc = document.getElementById("detail-desc");
 
-    // read values from the data attributes that were set at build time
     const imageSrc = el.dataset.img;
     const t = el.dataset.title;
     const d = el.dataset.desc;
 
-    if (!imageSrc) {
-      // fallback: hide the image if missing
-      img.src = "";
-      img.style.display = "none";
-    } else {
+    if (imageSrc) {
       img.style.display = "block";
       img.src = imageSrc;
+    } else {
+      img.style.display = "none";
     }
 
     title.textContent = t || "";
@@ -121,74 +137,3 @@ const services = [
     detailSection.classList.add("hidden");
   };
 </script>
-
-
-
-
-
-
-<!-- ---
-import worker_1 from "@/assets/worker_1.png";
-import worker_2_industry from "@/assets/worker_2_industry.png";
-import industrial_building_maintenance from "@/assets/industrial_building_maintenance.jpeg";
-import group_movie from "@/assets/group_movie.png";
-import Title from "../components/Title.astro";
-
-import { FaHome } from "react-icons/fa";
-import { MdFactory } from "react-icons/md";
-import { FaBuilding } from "react-icons/fa";
-import { FaIndustry } from "react-icons/fa";
----
-
-<section id="services" class="flex flex-col scroll-mt-[170px] items-center py-20 px-4">
-  <Title subTitle="Our Services" title="What We Offer" />
-   <div class="flex flex-row flex-nowrap justify-between gap-10 w-full max-w-6xl overflow-x-auto">
-    <div class="relative flex-[1_1_31%] max-w-[500px] h-[250px] rounded-lg overflow-hidden group">
-      <img
-        src={industrial_building_maintenance.src}
-        alt=""
-        class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
-      />
-      <div class="absolute inset-0 bg-blue-900/30 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 flex flex-col items-center justify-center text-white cursor-pointer">
-        <FaIndustry size={50}  client:only="react" />
-        <p class="text-center font-medium">Industrial & Building Maintenance</p>
-      </div>
-    </div>
-
-    <div class="relative flex-[1_1_31%] max-w-[500px] h-[250px] rounded-lg overflow-hidden group">
-      <img
-        src={worker_1.src}
-        alt=""
-        class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
-      />
-      <div class="absolute inset-0 bg-blue-900/30 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 flex flex-col items-center justify-center text-white cursor-pointer">
-        <FaHome size={50}  client:only="react" />
-        <p class="text-center font-medium">Residential Electrical Installation</p>
-      </div>
-    </div>
-
-    <div class="relative flex-[1_1_31%] max-w-[500px] h-[250px] rounded-lg overflow-hidden group">
-      <img
-        src={worker_2_industry.src}
-        alt=""
-        class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
-      />
-      <div class="absolute inset-0 bg-blue-900/30 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 flex flex-col items-center justify-center text-white cursor-pointer">
-        <MdFactory size={50} client:only="react" />
-        <p class="text-center font-medium">Industrial Electrical Installation</p>
-      </div>
-    </div>
-
-    <div class="relative flex-[1_1_31%] max-w-[500px] h-[250px] rounded-lg overflow-hidden group">
-      <img
-        src={group_movie.src}
-        alt=""
-        class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105"
-      />
-      <div class="absolute inset-0 bg-blue-900/30 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 flex flex-col items-center justify-center text-white cursor-pointer">
-        <FaBuilding size={50} client:only="react" />
-        <p class="text-center font-medium">Building Electrical Installation</p>
-      </div>
-    </div>
-  </div>
-</section> -->

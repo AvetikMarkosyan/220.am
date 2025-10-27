@@ -12,30 +12,46 @@ import img9 from "@/assets/group_movie.png";
 import img10 from "@/assets/hero_worker_3.png";
 ---
 
-<section id="gallery" class="w-[90%] mx-auto my-20 text-center">
+<section id="gallery" class="w-[90%] mx-auto my-20 text-center scroll-mt-[95px]">
   <Title subTitle="Gallery" title="220.am Photos" />
 
   <!-- ✅ First row of images -->
-  <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10">
+  <div
+    id="gallery-grid"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-10"
+  >
     {[img1, img2, img3, img4, img5, img10].map((img, i) => (
-      <img
-        src={img.src}
-        alt={`Gallery image ${i + 1}`}
-        class="w-full h-[250px] object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
+      <div
+        class="relative overflow-hidden rounded-lg shadow-md cursor-pointer group"
         onclick={`openModal('${img.src}')`}
-      />
+      >
+        <img
+          src={img.src}
+          alt={`Gallery image ${i + 1}`}
+          class="w-full h-auto max-h-[300px] object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
     ))}
   </div>
 
   <!-- ✅ Hidden extra images -->
-  <div id="more-photos" class="hidden grid grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+  <div
+    id="more-photos"
+    class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-6 animate-fadeIn"
+  >
     {[img6, img7, img8, img9].map((img, i) => (
-      <img
-        src={img.src}
-        alt={`More photo ${i + 6}`}
-        class="w-full h-[250px] object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
+      <div
+        class="relative overflow-hidden rounded-lg shadow-md cursor-pointer group"
         onclick={`openModal('${img.src}')`}
-      />
+      >
+        <img
+          src={img.src}
+          alt={`More photo ${i + 6}`}
+          class="w-full h-auto max-h-[300px] object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
     ))}
   </div>
 
@@ -51,10 +67,15 @@ import img10 from "@/assets/hero_worker_3.png";
   <!-- ✅ Modal for zoom -->
   <div
     id="image-modal"
-    class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+    class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-2 sm:px-0"
     onclick="closeModal()"
   >
-    <img id="modal-img" src="" alt="Zoomed image" class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl" />
+    <img
+      id="modal-img"
+      src=""
+      alt="Zoomed image"
+      class="max-h-[85vh] max-w-full sm:max-w-[90%] rounded-lg shadow-xl transition-transform duration-300"
+    />
   </div>
 
   <!-- ✅ Inline Script -->
@@ -77,49 +98,24 @@ import img10 from "@/assets/hero_worker_3.png";
       const modalImg = document.getElementById("modal-img");
       modalImg.src = src;
       modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden"; // prevent scroll behind modal
     }
 
     function closeModal() {
       const modal = document.getElementById("image-modal");
       modal.classList.add("hidden");
+      document.body.style.overflow = ""; // restore scroll
     }
   </script>
+
+  <!-- ✅ Animation -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+  </style>
 </section>
-
-
-
-
-
-
-
-<!-- ---
-// Company.astro
-import worker_2_worker_1 from "@/assets/worker_2_worker_1.png";
-import worker_2_worker_4 from "@/assets/worker_2_worker_4.png";
-import worker_2_worker_4_drowing from "@/assets/worker_2_worker_4_drowing.png";
-import worker_2 from "@/assets/worker_2.png";
-import group from "@/assets/group.png";
-import acSupply from "@/assets/acSupply.svg";
-import Title from "../components/Title.astro";
----
-
-<section id="gallery" class="w-[90%] mx-auto scroll-mt-[180px] my-20 text-center">
-  <Title subTitle="Gallery" title="220.am Photos" />
-
-  <div class="flex flex-wrap justify-around items-center gap-4 mb-10">
-  {
-    [worker_2_worker_1, worker_2_worker_4, worker_2_worker_4_drowing, worker_2, group].map((img, index) => (
-      <img
-        src={img.src}
-        alt={`Gallery image ${index + 1}`}
-        class="h-[250px] object-cover rounded-lg"
-      />
-    ))
-  }
-</div>
-
-  <button class="bg-blue-900 text-white px-6 py-2 rounded-full inline-flex items-center gap-2 hover:bg-gray-700 transition">
-    See more here
-    <img src={acSupply.src} alt="Arrow" class="h-10" />
-  </button>
-</section> -->

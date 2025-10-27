@@ -1,87 +1,88 @@
 ---
 // Contact.astro
 import Title from "../components/Title.astro";
-
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa";
 ---
 
 <section
   id="contact-us"
-  class="max-w-[90%] scroll-mt-[180px] mx-auto my-20 flex flex-col items-start gap-10"
+  class="max-w-[90%] mx-auto my-20 flex flex-col items-center text-center scroll-mt-[95px]"
 >
-  <div class="w-full text-center">
-    <Title subTitle="CONTACT US" title="Get In Touch" />
-  </div>
+  <Title subTitle="CONTACT US" title="Get In Touch" />
 
-  <div class="w-full flex flex-col md:flex-row justify-between gap-10">
-    <div class="md:flex-1 text-[#676767]">
-      <h3 class="text-2xl text-[#000F38] font-medium flex items-center ml-2 gap-2">
-        <FaPaperPlane size={24} className="text-blue-600" client:only="react" />
+  <div
+    class="mt-10 w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-10 text-[#676767]"
+  >
+    <!-- ✅ Left Section: Info -->
+    <div class="md:flex-1 text-left">
+      <h3 class="text-2xl text-[#000F38] font-semibold flex items-center gap-2 mb-4">
+        <FaPaperPlane size={22} className="text-[#212EA0]" client:only="react" />
         Send us a message
       </h3>
-      <p class="max-w-[450px] mt-4">
-        Feel free to reach out through the contact form or find our contact
-        information below. Your feedback, questions, and suggestions are
-        important to us as we strive to provide exceptional services to our
-        company.
+
+      <p class="max-w-[450px] leading-relaxed mb-6">
+        Feel free to reach out through the contact form or find our contact information below.  
+        Your feedback, questions, and suggestions are important to us as we strive to provide exceptional service.
       </p>
-      <ul class="flex flex-col gap-3">
+
+      <ul class="space-y-3 text-[15px]">
         <li class="flex items-center gap-2">
-          <FaEnvelope size={20} className="text-blue-600" client:only="react" />
+          <FaEnvelope size={18} className="text-[#212EA0]" client:only="react" />
           info@220.am
         </li>
         <li class="flex items-center gap-2">
-          <FaPhone size={20} className="text-blue-600" client:only="react" />
+          <FaPhone size={18} className="text-[#212EA0]" client:only="react" />
           +(374) 77 076 220
         </li>
         <li class="flex items-center gap-2">
-          <FaMapMarkerAlt size={20} className="text-blue-600" client:only="react" />
+          <FaMapMarkerAlt size={18} className="text-[#212EA0]" client:only="react" />
           Kurghinyan 27/41 Str, Yerevan, Armenia
         </li>
-</ul>
-</div>
-    <div class="md:flex-1">
-      <form
-  action="https://formspree.io/f/manbagag"
-  method="POST"
-  class="flex flex-col gap-5 w-full max-w-md"
->
-  <input
-    type="text"
-    name="name"
-    placeholder="Your Name"
-    required
-    class="border p-2 rounded"
-  />
-  <input
-    type="tel"
-    name="phone"
-    placeholder="Your Phone"
-    required
-    class="border p-2 rounded"
-  />
-  <input
-    type="email"
-    name="email"
-    placeholder="Your Email"
-    required
-    class="border p-2 rounded"
-  />
-  <textarea
-    name="message"
-    placeholder="Your Message"
-    rows="4"
-    required
-    class="border p-2 rounded"
-  ></textarea>
-  <button
-    type="submit"
-    class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
-  >
-    Send Message
-  </button>
-</form>
+      </ul>
+    </div>
 
+    <!-- ✅ Right Section: Form -->
+    <div class="md:flex-1 w-full md:w-auto">
+      <form
+        action="https://formspree.io/f/manbagag"
+        method="POST"
+        class="flex flex-col gap-4 w-full max-w-md mx-auto"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+          class="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-[#212EA0] outline-none transition"
+        />
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Your Phone"
+          required
+          class="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-[#212EA0] outline-none transition"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+          class="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-[#212EA0] outline-none transition"
+        />
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          rows="4"
+          required
+          class="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-[#212EA0] outline-none transition"
+        ></textarea>
+        <button
+          type="submit"
+          class="bg-[#212EA0] text-white px-6 py-3 rounded-md font-medium hover:bg-[#1a227e] transition"
+        >
+          Send Message
+        </button>
+      </form>
     </div>
   </div>
 </section>
