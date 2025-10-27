@@ -8,6 +8,8 @@ import img5 from "@/assets/group.png";
 import img6 from "@/assets/industrial_building_maintenance.jpeg";
 import img7 from "@/assets/worker_1.png";
 import img8 from "@/assets/worker_2_industry.png";
+import img9 from "@/assets/group_movie.png";
+import img10 from "@/assets/hero_worker_3.png";
 ---
 
 <section id="gallery" class="w-[90%] mx-auto my-20 text-center">
@@ -15,7 +17,7 @@ import img8 from "@/assets/worker_2_industry.png";
 
   <!-- ✅ First row of images -->
   <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10">
-    {[img1, img2, img3, img4, img5].map((img, i) => (
+    {[img1, img2, img3, img4, img5, img9].map((img, i) => (
       <img
         src={img.src}
         alt={`Gallery image ${i + 1}`}
@@ -27,7 +29,7 @@ import img8 from "@/assets/worker_2_industry.png";
 
   <!-- ✅ Hidden extra images -->
   <div id="more-photos" class="hidden grid grid-cols-2 md:grid-cols-3 gap-6 mt-6">
-    {[img6, img7, img8].map((img, i) => (
+    {[img6, img7, img8, img10].map((img, i) => (
       <img
         src={img.src}
         alt={`More photo ${i + 6}`}
