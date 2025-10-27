@@ -8,50 +8,32 @@ import img5 from "@/assets/group.png";
 import img6 from "@/assets/industrial_building_maintenance.jpeg";
 import img7 from "@/assets/worker_1.png";
 import img8 from "@/assets/worker_2_industry.png";
-import img9 from "@/assets/group_movie.png";
-import img10 from "@/assets/hero_worker_3.png";
 ---
 
-<section id="gallery" class="w-[90%] mx-auto my-20 text-center scroll-mt-[95px]">
+<section id="gallery" class="w-[90%] mx-auto my-20 text-center">
   <Title subTitle="Gallery" title="220.am Photos" />
 
   <!-- ✅ First row of images -->
-  <div
-    id="gallery-grid"
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-10"
-  >
-    {[img1, img2, img3, img4, img5, img10].map((img, i) => (
-      <div
-        class="relative overflow-hidden rounded-lg shadow-md cursor-pointer group"
+  <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10">
+    {[img1, img2, img3, img4, img5].map((img, i) => (
+      <img
+        src={img.src}
+        alt={`Gallery image ${i + 1}`}
+        class="w-full h-[250px] object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
         onclick={`openModal('${img.src}')`}
-      >
-        <img
-          src={img.src}
-          alt={`Gallery image ${i + 1}`}
-          class="w-full h-auto max-h-[300px] object-cover transition-transform duration-300 group-hover:scale-105"
-          loading="lazy"
-        />
-      </div>
+      />
     ))}
   </div>
 
   <!-- ✅ Hidden extra images -->
-  <div
-    id="more-photos"
-    class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-6 animate-fadeIn"
-  >
-    {[img6, img7, img8, img9].map((img, i) => (
-      <div
-        class="relative overflow-hidden rounded-lg shadow-md cursor-pointer group"
+  <div id="more-photos" class="hidden grid grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+    {[img6, img7, img8].map((img, i) => (
+      <img
+        src={img.src}
+        alt={`More photo ${i + 6}`}
+        class="w-full h-[250px] object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
         onclick={`openModal('${img.src}')`}
-      >
-        <img
-          src={img.src}
-          alt={`More photo ${i + 6}`}
-          class="w-full h-auto max-h-[300px] object-cover transition-transform duration-300 group-hover:scale-105"
-          loading="lazy"
-        />
-      </div>
+      />
     ))}
   </div>
 
@@ -67,15 +49,10 @@ import img10 from "@/assets/hero_worker_3.png";
   <!-- ✅ Modal for zoom -->
   <div
     id="image-modal"
-    class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-2 sm:px-0"
+    class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50"
     onclick="closeModal()"
   >
-    <img
-      id="modal-img"
-      src=""
-      alt="Zoomed image"
-      class="max-h-[85vh] max-w-full sm:max-w-[90%] rounded-lg shadow-xl transition-transform duration-300"
-    />
+    <img id="modal-img" src="" alt="Zoomed image" class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl" />
   </div>
 
   <!-- ✅ Inline Script -->
@@ -98,24 +75,11 @@ import img10 from "@/assets/hero_worker_3.png";
       const modalImg = document.getElementById("modal-img");
       modalImg.src = src;
       modal.classList.remove("hidden");
-      document.body.style.overflow = "hidden"; // prevent scroll behind modal
     }
 
     function closeModal() {
       const modal = document.getElementById("image-modal");
       modal.classList.add("hidden");
-      document.body.style.overflow = ""; // restore scroll
     }
   </script>
-
-  <!-- ✅ Animation -->
-  <style>
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fadeIn {
-      animation: fadeIn 0.4s ease-in-out;
-    }
-  </style>
 </section>
